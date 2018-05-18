@@ -1,5 +1,4 @@
 questions:
-
 - variable: global.redis.deploy
   default: "true"
   description: "是否部署Redis"
@@ -18,7 +17,6 @@ questions:
     description: "Redis端口"
     type: int
     label: 端口
-
 - variable: console.env.db_url
   default: "jdbc:mysql://172.16.1.8:3336/paas_apigw?characterEncoding=utf-8&useSSL=false"
   description: "网关数据库连接"
@@ -40,7 +38,6 @@ questions:
   required: true
   label: 密码
   group: "网关控制台"
-
 - variable: console.env.user_db_url
   default: "jdbc:mysql://172.16.1.8:3336/paas_user?characterEncoding=utf-8&useSSL=false"
   description: "用户数据库连接"
@@ -62,7 +59,6 @@ questions:
   required: true
   label: 密码
   group: "网关控制台"
-
 - variable: console.env.oauth2_serverUrl
   default: "http://114.67.33.121:8081/sso"
   description: "SSO外网地址"
@@ -70,7 +66,6 @@ questions:
   required: true
   label: SSO地址
   group: "网关控制台"
-
 - variable: console.service.port
   default: "30020"
   description: "HTTP NodePort访问端口(范围30000-32767)"
@@ -79,7 +74,6 @@ questions:
   max: 32767
   label: 访问端口
   group: "网关控制台"
-
 - variable: runtime.env.SSO_ENDPOINT
   default: "http://172.16.1.9:8081/sso"
   description: "SSO内网地址"
