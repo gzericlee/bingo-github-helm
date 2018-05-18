@@ -1,3 +1,20 @@
 apiVersion: v1
-entries: {}
-generated: 2018-05-18T16:38:28.6290488+08:00
+entries:
+  api-gateway:
+  - appVersion: 1.0.1
+    created: 2018-05-18T16:54:42.1773883+08:00
+    description: api网关
+    digest: a700f04a06cc2f9178b5b9ebcee6909d6dd25dae412c63133da60c0cb00924de
+    engine: gotpl
+    keywords:
+    - gateway
+    maintainers:
+    - email: penghj@bingosoft.net
+      name: karl
+    name: api-gateway
+    sources:
+    - https://gitlab.bingosoft.net
+    urls:
+    - api-gateway-1.0.1.tgz
+    version: 1.0.1
+generated: 2018-05-18T16:54:42.1763913+08:00
