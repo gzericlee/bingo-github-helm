@@ -1,3 +1,5 @@
+categories:
+- gateway
 questions:
 - variable: global.redis.deploy
   default: "true"
