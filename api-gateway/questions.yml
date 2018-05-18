@@ -1,0 +1,97 @@
+questions:
+
+- variable: global.redis.deploy
+  default: "true"
+  description: "是否部署Redis"
+  label: 部署Redis
+  type: boolean
+  show_subquestion_if: false
+  group: "Redis配置"
+  subquestions:
+  - variable: global.redis.host
+    default: "172.16.1.8"
+    description: "Redis地址"
+    type: string
+    label: 地址
+  - variable: global.redis.port
+    default: "6379"
+    description: "Redis端口"
+    type: int
+    label: 端口
+
+- variable: console.env.db_url
+  default: "jdbc:mysql://172.16.1.8:3336/paas_apigw?characterEncoding=utf-8&useSSL=false"
+  description: "网关数据库连接"
+  type: string
+  required: true
+  label: 数据库连接
+  group: "网关控制台"
+- variable: console.env.db_username
+  default: "paas"
+  description: "用户名"
+  type: string
+  required: true
+  label: 用户名
+  group: "网关控制台"
+- variable: console.env.db_password
+  default: "Bingo@devops1117"
+  description: "密码"
+  type: string
+  required: true
+  label: 密码
+  group: "网关控制台"
+
+- variable: console.env.user_db_url
+  default: "jdbc:mysql://172.16.1.8:3336/paas_user?characterEncoding=utf-8&useSSL=false"
+  description: "用户数据库连接"
+  type: string
+  required: true
+  label: 数据库连接
+  group: "网关控制台"
+- variable: console.env.user_db_username
+  default: "paas"
+  description: "用户名"
+  type: string
+  required: true
+  label: 用户名
+  group: "网关控制台"
+- variable: console.env.user_db_password
+  default: "Bingo@devops1117"
+  description: "密码"
+  type: string
+  required: true
+  label: 密码
+  group: "网关控制台"
+
+- variable: console.env.oauth2_serverUrl
+  default: "http://114.67.33.121:8081/sso"
+  description: "SSO外网地址"
+  type: string
+  required: true
+  label: SSO地址
+  group: "网关控制台"
+
+- variable: console.service.port
+  default: "30020"
+  description: "HTTP NodePort访问端口(范围30000-32767)"
+  type: int
+  min: 30000
+  max: 32767
+  label: 访问端口
+  group: "网关控制台"
+
+- variable: runtime.env.SSO_ENDPOINT
+  default: "http://172.16.1.9:8081/sso"
+  description: "SSO内网地址"
+  type: string
+  required: true
+  label: SSO地址
+  group: "网关运行时"
+- variable: runtime.service.port
+  default: "30021"
+  description: "HTTP NodePort访问端口(范围30000-32767)"
+  type: int
+  min: 30000
+  max: 32767
+  label: 访问端口
+  group: "网关运行时"

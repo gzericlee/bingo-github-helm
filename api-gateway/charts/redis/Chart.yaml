@@ -1,5 +1,5 @@
-appVersion: v1.0
-version: 1.0
+appVersion: 1.0.0
+version: 1.0.0
 description: 开放源码，高级键值存储。它通常被称为数据结构服务器，因为钥匙可以包含字符串、散列、列表、集合和排序集。
 engine: gotpl
 home: http://redis.io/
