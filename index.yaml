@@ -15,6 +15,6 @@ entries:
     sources:
     - https://gitlab.bingosoft.net
     urls:
-    - api-gateway-1.0.1.tgz
+    - https://gzericlee.github.io/bingo-github-helm/api-gateway-1.0.1.tgz
     version: 1.0.1
 generated: 2018-05-18T16:54:42.1763913+08:00
