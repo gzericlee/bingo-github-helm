@@ -1,0 +1,12 @@
+appVersion: v1.0
+version: 1.0
+description: api网关
+engine: gotpl
+keywords:
+- gateway
+maintainers:
+- email: penghj@bingosoft.net
+  name: karl
+name: api-gateway
+sources:
+- https://gitlab.bingosoft.net

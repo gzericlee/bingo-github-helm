@@ -1,0 +1,47 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: api-gateway-console
+  labels:
+    app: api-gateway-console
+spec:
+  replicas: {{ .Values.console.replicaCount }}
+  template:
+    metadata:
+      labels:
+        app: api-gateway-console
+    spec:
+      containers:
+        - name: api-gateway-console
+          image: "{{ .Values.console.image.repository }}:{{ .Values.console.image.tag }}"
+          imagePullPolicy: {{ .Values.console.image.pullPolicy }}
+          resources:
+            limits:
+              cpu: "0.2"
+              memory: 1Gi
+            requests:
+              cpu: "0.2"
+              memory: 1Gi
+          ports:
+          - containerPort: 8080
+          env:
+          - name: db_url
+            value: "{{ .Values.console.env.db_url }}"
+          - name: db_password
+            value: "{{ .Values.console.env.db_password }}"
+          - name: db_username
+            value: "{{ .Values.console.env.db_username }}"
+          - name: oauth2_serverUrl
+            value: "{{ .Values.console.env.oauth2_serverUrl }}"
+          - name: redis_hostAndPort
+            {{ if .Values.global.redis.deploy }}
+            value: "{{ .Values.global.redis.name }}:{{ .Values.global.redis.port }}"
+            {{ else }}
+            value: "{{ .Values.global.redis.host }}:{{ .Values.global.redis.port }}"
+            {{ end }}
+          - name: user_db_password
+            value: "{{ .Values.console.env.user_db_password }}"
+          - name: user_db_url
+            value: "{{ .Values.console.env.user_db_url }}"
+          - name: user_db_username
+            value: "{{ .Values.console.env.user_db_username }}"

@@ -1,0 +1,15 @@
+{{ if .Values.global.redis.deploy }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: api-gateway-redis
+  labels:
+    app: api-gateway-redis
+spec:
+  type: ClusterIP
+  ports:
+  - port: 6379
+    name: tcp
+  selector:
+    app: api-gateway-redis
+{{ end }}

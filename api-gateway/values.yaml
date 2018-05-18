@@ -1,0 +1,54 @@
+## 控制台配置 ##
+console:
+  replicaCount: 1
+
+  env:
+    db_url: jdbc:mysql://172.16.1.8:3336/paas_apigw?characterEncoding=utf-8&useSSL=false
+    db_username: paas
+    db_password: Bingo@devops1117
+
+    user_db_url: jdbc:mysql://172.16.1.8:3336/paas_user?characterEncoding=utf-8&useSSL=false
+    user_db_username: paas
+    user_db_password: Bingo@devops1117
+
+    oauth2_serverUrl: http://114.67.33.121:8081/sso
+
+  image:
+    repository: registry.bingosoft.net:10002/207de27e-6ae5-472d-b6cd-af2c7778ab08/api-gateway-console
+    tag: latest
+    pullPolicy: IfNotPresent
+
+  service:
+    type: NodePort
+    port: 30020
+
+## 运行时配置 ##
+runtime:
+  replicaCount: 1
+
+  env:
+    CONSOLE_HOST: api-gateway-console
+    CONSOLE_PORT: 8080
+    SSO_ENDPOINT: http://172.16.1.9:8081/sso
+
+  image:
+    repository: registry.bingosoft.net:10002/207de27e-6ae5-472d-b6cd-af2c7778ab08/api-gateway-runtime
+    tag: latest
+    pullPolicy: IfNotPresent
+
+  service:
+    type: NodePort
+    port: 30021
+
+## 全局配置 ##
+global:
+  redis:
+    ## 是否部署redis
+    deploy: true
+
+    ## 如果部署redis则通过服务名访问
+    name: api-gateway-redis
+
+    ## 不部署则设置已存在的redis
+    host: 172.16.1.8
+    port: 6379

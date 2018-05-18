@@ -1,0 +1,28 @@
+{{ if .Values.global.redis.deploy }}
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: api-gateway-redis
+  labels:
+    app: api-gateway-redis
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: api-gateway-redis
+    spec:
+      containers:
+        - name: api-gateway-redis
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          resources:
+            limits:
+              cpu: "0.2"
+              memory: 1Gi
+            requests:
+              cpu: "0.2"
+              memory: 1Gi
+          ports:
+          - containerPort: 6379
+{{ end }}

@@ -1,0 +1,4 @@
+image:
+  repository: redis
+  tag: 4.0.9
+  pullPolicy: Always

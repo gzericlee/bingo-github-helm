@@ -1,0 +1,41 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: api-gateway-runtime
+  labels:
+    app: api-gateway-runtime
+spec:
+  replicas: {{ .Values.runtime.replicaCount }}
+  template:
+    metadata:
+      labels:
+        app: api-gateway-runtime
+    spec:
+      containers:
+        - name: api-gateway-runtime
+          image: "{{ .Values.runtime.image.repository }}:{{ .Values.runtime.image.tag }}"
+          imagePullPolicy: {{ .Values.runtime.image.pullPolicy }}
+          resources:
+            limits:
+              cpu: "0.2"
+              memory: 1Gi
+            requests:
+              cpu: "0.2"
+              memory: 1Gi
+          ports:
+          - containerPort: 8080
+          env:
+          - name: CONSOLE_HOST
+            value: "{{ .Values.runtime.env.CONSOLE_HOST }}"
+          - name: CONSOLE_PORT
+            value: "{{ .Values.runtime.env.CONSOLE_PORT }}"
+          - name: REDIS_HOST
+            {{ if .Values.global.redis.deploy }}
+            value: "{{ .Values.global.redis.name }}"
+            {{ else }}
+            value: "{{ .Values.global.redis.host }}"
+            {{ end }}
+          - name: REDIS_PORT
+            value: "{{ .Values.global.redis.port }}"
+          - name: SSO_ENDPOINT
+            value: "{{ .Values.runtime.env.SSO_ENDPOINT }}"
