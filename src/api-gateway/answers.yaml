@@ -1,0 +1,13 @@
+global.redis.deploy: true
+global.redis.host: null
+global.redis.port: null
+console.env.db_url: null
+console.env.db_username: null
+console.env.db_password: null
+console.env.user_db_url: null
+console.env.user_db_username: null
+console.env.user_db_password: null
+console.env.oauth2_serverUrl: null
+console.service.port: 30020
+runtime.env.SSO_ENDPOINT: null
+runtime.service.port: 30021
