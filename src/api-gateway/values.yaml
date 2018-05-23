@@ -22,6 +22,11 @@ console:
     type: NodePort
     port: 30020
 
+  ingress:
+    enabled: false
+    hosts:
+    - name: gateway.local
+
 ## 运行时配置 ##
 runtime:
   replicaCount: 1
@@ -35,10 +40,6 @@ runtime:
     repository: registry.bingosoft.net:10002/207de27e-6ae5-472d-b6cd-af2c7778ab08/api-gateway-runtime
     tag: latest
     pullPolicy: IfNotPresent
-
-  service:
-    type: NodePort
-    port: 30021
 
 ## 全局配置 ##
 global:

@@ -1,11 +1,11 @@
 questions:
 - variable: global.redis.deploy
   default: "true"
-  description: "是否部署Redis"
+  description: "是否需要单独部署Redis"
   label: 部署Redis
   type: boolean
   show_subquestion_if: false
-  group: "Redis配置"
+  group: "Redis Settings"
   subquestions:
   - variable: global.redis.host
     default: "172.16.1.8"
@@ -19,73 +19,92 @@ questions:
     label: 端口
 - variable: console.env.db_url
   default: "jdbc:mysql://172.16.1.8:3336/paas_apigw?characterEncoding=utf-8&useSSL=false"
-  description: "网关数据库连接"
+  description: "网关数据库连接字符串"
   type: string
   required: true
   label: 数据库连接
-  group: "网关控制台"
+  group: "Gateway Database Settings"
 - variable: console.env.db_username
   default: "paas"
   description: "用户名"
   type: string
   required: true
   label: 用户名
-  group: "网关控制台"
+  group: "Gateway Database Settings"
 - variable: console.env.db_password
   default: "Bingo@devops1117"
   description: "密码"
   type: string
   required: true
   label: 密码
-  group: "网关控制台"
+  group: "Gateway Database Settings"
 - variable: console.env.user_db_url
   default: "jdbc:mysql://172.16.1.8:3336/paas_user?characterEncoding=utf-8&useSSL=false"
   description: "用户数据库连接"
   type: string
   required: true
   label: 数据库连接
-  group: "网关控制台"
+  group: "User Database Settings"
 - variable: console.env.user_db_username
   default: "paas"
   description: "用户名"
   type: string
   required: true
   label: 用户名
-  group: "网关控制台"
+  group: "User Database Settings"
 - variable: console.env.user_db_password
   default: "Bingo@devops1117"
   description: "密码"
   type: string
   required: true
   label: 密码
-  group: "网关控制台"
+  group: "User Database Settings"
 - variable: console.env.oauth2_serverUrl
   default: "http://114.67.33.121:8081/sso"
   description: "SSO外网地址"
   type: string
   required: true
   label: SSO地址
-  group: "网关控制台"
-- variable: console.service.port
-  default: "30020"
-  description: "HTTP NodePort访问端口(范围30000-32767)"
-  type: int
-  min: 30000
-  max: 32767
-  label: 访问端口
-  group: "网关控制台"
+  group: "SSO Extranet Endpoint"
 - variable: runtime.env.SSO_ENDPOINT
   default: "http://172.16.1.9:8081/sso"
   description: "SSO内网地址"
   type: string
   required: true
   label: SSO地址
-  group: "网关运行时"
-- variable: runtime.service.port
-  default: "30021"
-  description: "HTTP NodePort访问端口(范围30000-32767)"
-  type: int
-  min: 30000
-  max: 32767
-  label: 访问端口
-  group: "网关运行时"
+  group: "SSO Intranet Endpoint"
+- variable: console.ingress.enabled
+  default: "true"
+  description: "公开服务"
+  type: boolean
+  label: 7层负载均衡器
+  show_subquestion_if: true
+  group: "Services and Load Balancing"
+  subquestions:
+  - variable: console.ingress.hosts[0].name
+    default: "bingosoft.io"
+    description: "通过主机名访问网关控制台"
+    type: hostname
+    required: true
+    label: Hostname
+- variable: console.service.type
+  default: "NodePort"
+  description: "服务类型"
+  type: enum
+  show_if: "console.ingress.enabled=false"
+  options:
+    - "ClusterIP"
+    - "NodePort"
+    - "LoadBalancer"
+  required: true
+  label: 服务类型
+  show_subquestion_if: "NodePort"
+  group: "Service Type"
+  subquestions:
+  - variable: console.service.port
+    default: ""
+    description: "NodePort端口（选择30000-32767之间的端口）"
+    type: int
+    min: 30020
+    max: 32767
+    label: NodePort访问端口

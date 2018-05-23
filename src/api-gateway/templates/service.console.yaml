@@ -8,7 +8,9 @@ spec:
   type: {{ .Values.console.service.type }}
   ports:
     - port: 8080
+      {{- if (and (eq .Values.console.service.type "NodePort") (not (empty .Values.console.service.port)))}}
       nodePort: {{ .Values.console.service.port }}
+      {{- end }}
       name: http
   selector:
     app: api-gateway-console

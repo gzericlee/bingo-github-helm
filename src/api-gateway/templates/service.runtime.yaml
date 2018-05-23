@@ -5,10 +5,6 @@ metadata:
   labels:
     app: api-gateway-runtime
 spec:
-  type: {{ .Values.runtime.service.type }}
-  ports:
-    - port: 8080
-      nodePort: {{ .Values.runtime.service.port }}
-      name: http
+  type: ClusterIP
   selector:
     app: api-gateway-runtime
