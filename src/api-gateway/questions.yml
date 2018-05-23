@@ -24,20 +24,19 @@ questions:
   required: true
   label: 数据库连接
   group: "Gateway Database Settings"
-- variable: console.env.db_username
-  default: "paas"
-  description: "用户名"
-  type: string
-  required: true
-  label: 用户名
-  group: "Gateway Database Settings"
-- variable: console.env.db_password
-  default: "Bingo@devops1117"
-  description: "密码"
-  type: string
-  required: true
-  label: 密码
-  group: "Gateway Database Settings"
+  subquestions:
+  - variable: console.env.db_username
+    default: "paas"
+    description: "用户名"
+    type: string
+    required: true
+    label: 用户名
+  - variable: console.env.db_password
+    default: "Bingo@devops1117"
+    description: "密码"
+    type: string
+    required: true
+    label: 密码
 - variable: console.env.user_db_url
   default: "jdbc:mysql://172.16.1.8:3336/paas_user?characterEncoding=utf-8&useSSL=false"
   description: "用户数据库连接"
@@ -45,20 +44,19 @@ questions:
   required: true
   label: 数据库连接
   group: "User Database Settings"
-- variable: console.env.user_db_username
-  default: "paas"
-  description: "用户名"
-  type: string
-  required: true
-  label: 用户名
-  group: "User Database Settings"
-- variable: console.env.user_db_password
-  default: "Bingo@devops1117"
-  description: "密码"
-  type: string
-  required: true
-  label: 密码
-  group: "User Database Settings"
+  subquestions:
+  - variable: console.env.user_db_username
+    default: "paas"
+    description: "用户名"
+    type: string
+    required: true
+    label: 用户名
+  - variable: console.env.user_db_password
+    default: "Bingo@devops1117"
+    description: "密码"
+    type: string
+    required: true
+    label: 密码
 - variable: console.env.oauth2_serverUrl
   default: "http://114.67.33.121:8081/sso"
   description: "SSO外网地址"
@@ -75,18 +73,18 @@ questions:
   group: "SSO Intranet Endpoint"
 - variable: console.ingress.enabled
   default: "true"
-  description: "公开服务"
+  description: "是否通过负载均衡公开服务"
   type: boolean
-  label: 7层负载均衡器
+  label: 负载均衡
   show_subquestion_if: true
   group: "Services and Load Balancing"
   subquestions:
   - variable: console.ingress.hosts[0].name
-    default: "bingosoft.io"
+    default: "ipx.io"
     description: "通过主机名访问网关控制台"
     type: hostname
     required: true
-    label: Hostname
+    label: 主机名
 - variable: console.service.type
   default: "NodePort"
   description: "服务类型"
@@ -102,9 +100,9 @@ questions:
   group: "Service Type"
   subquestions:
   - variable: console.service.port
-    default: ""
+    default: "30020"
     description: "NodePort端口（选择30000-32767之间的端口）"
     type: int
-    min: 30020
+    min: 30000
     max: 32767
     label: NodePort访问端口

@@ -2,9 +2,9 @@ apiVersion: v1
 entries:
   api-gateway:
   - appVersion: 1.0.3
-    created: 2018-05-23T12:45:19.641315552+08:00
+    created: 2018-05-23T13:17:46.699974703+08:00
     description: api网关
-    digest: e19085ec7ed07b31db4fcdac3cd72d362f86b99d382eda3378d57c11890b4a51
+    digest: b952ee243da4b7feded40fe0442395ac240f89c658fe940e940682378d768c1b
     engine: gotpl
     keywords:
     - gateway
@@ -18,7 +18,7 @@ entries:
     - https://gzericlee.github.io/bingo-github-helm/api-gateway-1.0.3.tgz
     version: 1.0.3
   - appVersion: 1.0.2
-    created: 2018-05-23T12:45:19.640935147+08:00
+    created: 2018-05-23T13:17:46.6994586+08:00
     description: api网关
     digest: 96b21f7be3affba655bdd8d70771de7f5ab4d55a0baeb8c017478f3108e669b2
     engine: gotpl
@@ -33,4 +33,4 @@ entries:
     urls:
     - https://gzericlee.github.io/bingo-github-helm/api-gateway-1.0.2.tgz
     version: 1.0.2
-generated: 2018-05-23T12:45:19.640437656+08:00
+generated: 2018-05-23T13:17:46.698837378+08:00
