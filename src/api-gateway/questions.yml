@@ -1,7 +1,7 @@
 questions:
 - variable: global.redis.deploy
-  default: "true"
-  description: "是否需要单独部署Redis"
+  default: "false"
+  description: "是否需要部署Redis"
   label: 部署Redis
   type: boolean
   show_subquestion_if: false
@@ -19,54 +19,56 @@ questions:
     label: 端口
 - variable: console.env.db_url
   default: "jdbc:mysql://172.16.1.8:3336/paas_apigw?characterEncoding=utf-8&useSSL=false"
-  description: "网关数据库连接字符串"
+  description: "网关数据库-连接字符串"
   type: string
   required: true
   label: 数据库连接
   group: "Gateway Database Settings"
-  subquestions:
-  - variable: console.env.db_username
-    default: "paas"
-    description: "用户名"
-    type: string
-    required: true
-    label: 用户名
-  - variable: console.env.db_password
-    default: "Bingo@devops1117"
-    description: "密码"
-    type: string
-    required: true
-    label: 密码
+- variable: console.env.db_username
+  default: "paas"
+  description: "网关数据库-用户名"
+  type: string
+  required: true
+  label: 用户名
+  group: "Gateway Database Settings"
+- variable: console.env.db_password
+  default: "Bingo@devops1117"
+  description: "网关数据库-密码"
+  type: string
+  required: true
+  label: 密码
+  group: "Gateway Database Settings"
 - variable: console.env.user_db_url
   default: "jdbc:mysql://172.16.1.8:3336/paas_user?characterEncoding=utf-8&useSSL=false"
-  description: "用户数据库连接"
+  description: "用户数据库-连接字符串"
   type: string
   required: true
   label: 数据库连接
   group: "User Database Settings"
-  subquestions:
-  - variable: console.env.user_db_username
-    default: "paas"
-    description: "用户名"
-    type: string
-    required: true
-    label: 用户名
-  - variable: console.env.user_db_password
-    default: "Bingo@devops1117"
-    description: "密码"
-    type: string
-    required: true
-    label: 密码
+- variable: console.env.user_db_username
+  default: "paas"
+  description: "用户数据库-用户名"
+  type: string
+  required: true
+  label: 用户名
+  group: "User Database Settings"
+- variable: console.env.user_db_password
+  default: "Bingo@devops1117"
+  description: "用户数据库-密码"
+  type: string
+  required: true
+  label: 密码
+  group: "User Database Settings"
 - variable: console.env.oauth2_serverUrl
   default: "http://114.67.33.121:8081/sso"
-  description: "SSO外网地址"
+  description: "SSO-外网地址"
   type: string
   required: true
   label: SSO地址
   group: "SSO Extranet Endpoint"
 - variable: runtime.env.SSO_ENDPOINT
   default: "http://172.16.1.9:8081/sso"
-  description: "SSO内网地址"
+  description: "SSO-内网地址"
   type: string
   required: true
   label: SSO地址
@@ -80,7 +82,7 @@ questions:
   group: "Services and Load Balancing"
   subquestions:
   - variable: console.ingress.hosts[0].name
-    default: "ipx.io"
+    default: "xip.io"
     description: "通过主机名访问网关控制台"
     type: hostname
     required: true
