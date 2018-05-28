@@ -1,5 +1,5 @@
-appVersion: 1.0.4
-version: 1.0.4
+appVersion: 1.0.5
+version: 1.0.5
 description: api网关
 engine: gotpl
 keywords:

@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
         - name: api-gateway-runtime
-          image: "{{ .Values.runtime.image.repository }}:{{ .Values.runtime.image.tag }}"
+          image: "{{ .Values.runtime.image.repository }}"
           imagePullPolicy: {{ .Values.runtime.image.pullPolicy }}
           resources:
             limits:

@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
         - name: api-gateway-console
-          image: "{{ .Values.console.image.repository }}:{{ .Values.console.image.tag }}"
+          image: "{{ .Values.console.image.repository }}"
           imagePullPolicy: {{ .Values.console.image.pullPolicy }}
           resources:
             limits:
