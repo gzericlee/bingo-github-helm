@@ -2,7 +2,7 @@ apiVersion: v1
 entries:
   api-gateway:
   - appVersion: 1.0.6
-    created: 2018-05-28T14:53:41.408933336+08:00
+    created: 2018-05-28T17:59:03.334807982+08:00
     description: api网关
     digest: bfbaf8092687f9332a3690577872aac0f33013fce23b6027d9d3efb39b5907ef
     engine: gotpl
@@ -17,68 +17,4 @@ entries:
     urls:
     - https://gzericlee.github.io/bingo-github-helm/api-gateway-1.0.6.tgz
     version: 1.0.6
-  - appVersion: 1.0.5
-    created: 2018-05-28T14:53:41.408607361+08:00
-    description: api网关
-    digest: 09c74fecbe64d40599f7066c64a02af21a73d00469cb38bdca6f07d34c2899cc
-    engine: gotpl
-    keywords:
-    - gateway
-    maintainers:
-    - email: penghj@bingosoft.net
-      name: karl
-    name: api-gateway
-    sources:
-    - https://gitlab.bingosoft.net
-    urls:
-    - https://gzericlee.github.io/bingo-github-helm/api-gateway-1.0.5.tgz
-    version: 1.0.5
-  - appVersion: 1.0.4
-    created: 2018-05-28T14:53:41.408263126+08:00
-    description: api网关
-    digest: c36645eb88be77119aac9cf377b92d163ee025441e3a295a50b488060113e94e
-    engine: gotpl
-    keywords:
-    - gateway
-    maintainers:
-    - email: penghj@bingosoft.net
-      name: karl
-    name: api-gateway
-    sources:
-    - https://gitlab.bingosoft.net
-    urls:
-    - https://gzericlee.github.io/bingo-github-helm/api-gateway-1.0.4.tgz
-    version: 1.0.4
-  - appVersion: 1.0.3
-    created: 2018-05-28T14:53:41.407948903+08:00
-    description: api网关
-    digest: 6acfdb1ac8fb6da44eb9a4f61ff297fdff5f4115261ad05052733d0b3da05944
-    engine: gotpl
-    keywords:
-    - gateway
-    maintainers:
-    - email: penghj@bingosoft.net
-      name: karl
-    name: api-gateway
-    sources:
-    - https://gitlab.bingosoft.net
-    urls:
-    - https://gzericlee.github.io/bingo-github-helm/api-gateway-1.0.3.tgz
-    version: 1.0.3
-  - appVersion: 1.0.2
-    created: 2018-05-28T14:53:41.407619875+08:00
-    description: api网关
-    digest: 96b21f7be3affba655bdd8d70771de7f5ab4d55a0baeb8c017478f3108e669b2
-    engine: gotpl
-    keywords:
-    - gateway
-    maintainers:
-    - email: penghj@bingosoft.net
-      name: karl
-    name: api-gateway
-    sources:
-    - https://gitlab.bingosoft.net
-    urls:
-    - https://gzericlee.github.io/bingo-github-helm/api-gateway-1.0.2.tgz
-    version: 1.0.2
-generated: 2018-05-28T14:53:41.407195286+08:00
+generated: 2018-05-28T17:59:03.33430092+08:00
