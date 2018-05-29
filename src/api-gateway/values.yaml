@@ -14,7 +14,7 @@ console:
     oauth2_serverUrl: http://114.67.33.121:8081/sso
 
   image:
-    repository: registry.bingosoft.net:10002/207de27e-6ae5-472d-b6cd-af2c7778ab08/api-gateway-console:latest
+    repository: hub.bingosoft.net/bingoapigw/api-gateway-console:latest
     pullPolicy: IfNotPresent
 
   service:
@@ -36,7 +36,7 @@ runtime:
     SSO_ENDPOINT: http://172.16.1.9:8081/sso
 
   image:
-    repository: registry.bingosoft.net:10002/207de27e-6ae5-472d-b6cd-af2c7778ab08/api-gateway-runtime:latest
+    repository: hub.bingosoft.net/bingoapigw/api-gateway-runtime:latest
     pullPolicy: IfNotPresent
 
 ## 全局配置 ##
