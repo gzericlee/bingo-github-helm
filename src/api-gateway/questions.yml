@@ -1,22 +1,4 @@
 questions:
-- variable: image.default
-  default: "true"
-  description: "默认镜像"
-  label: 默认镜像
-  type: boolean
-  show_subquestion_if: false
-  group: "镜像"
-  subquestions:
-  - variable: console.image.repository
-    default: "registry.bingosoft.net:10002/207de27e-6ae5-472d-b6cd-af2c7778ab08/api-gateway-console:latest"
-    description: "控制台镜像"
-    type: string
-    label: 镜像名称
-  - variable: runtime.image.repository
-    default: "registry.bingosoft.net:10002/207de27e-6ae5-472d-b6cd-af2c7778ab08/api-gateway-runtime:latest"
-    description: "运行时镜像"
-    type: string
-    label: 镜像名称
 - variable: global.redis.deploy
   default: "false"
   description: "是否需要部署Redis"`
