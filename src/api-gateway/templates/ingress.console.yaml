@@ -16,8 +16,8 @@ spec:
       paths:
         - path: {{ default "/" .path }}
           backend:
-            serviceName: {{ template "fullname" $ }}
-            servicePort: 80
+            serviceName: api-gateway-console
+            servicePort: 8080
 ---
 {{- end }}
 {{- end }}

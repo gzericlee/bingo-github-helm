@@ -1,8 +1,24 @@
 apiVersion: v1
 entries:
   api-gateway:
+  - appVersion: v1.1.1
+    created: 2018-06-08T11:20:27.0583017+08:00
+    description: api网关
+    digest: c9413e481dc6e986ebb4b304753ac2534be45d33c0b90fe82f117157a357d900
+    engine: gotpl
+    keywords:
+    - gateway
+    maintainers:
+    - email: penghj@bingosoft.net
+      name: karl
+    name: api-gateway
+    sources:
+    - https://gitlab.bingosoft.net
+    urls:
+    - https://gitlab.bingosoft.net/bingo-devops/bingo-devops-helm/raw/master/api-gateway-1.1.1.tgz
+    version: 1.1.1
   - appVersion: v1.1.0
-    created: 2018-05-29T17:47:53.8155859+08:00
+    created: 2018-06-08T11:20:27.0576602+08:00
     description: api网关
     digest: 971042f1c64479134fe560d971d8171228d39ac5e024f526eb0b436953dfd0ac
     engine: gotpl
@@ -15,10 +31,10 @@ entries:
     sources:
     - https://gitlab.bingosoft.net
     urls:
-    - https://gzericlee.github.io/bingo-github-helm/api-gateway-1.1.0.tgz
+    - https://gitlab.bingosoft.net/bingo-devops/bingo-devops-helm/raw/master/api-gateway-1.1.0.tgz
     version: 1.1.0
   - appVersion: v1.0.7
-    created: 2018-05-29T17:47:53.815232731+08:00
+    created: 2018-06-08T11:20:27.0570376+08:00
     description: api网关
     digest: 7f6cc6b8fab2d9ce7e5fa6f22875dfc8bd4e553cae97852273af3b11f8fa8d65
     engine: gotpl
@@ -31,6 +47,6 @@ entries:
     sources:
     - https://gitlab.bingosoft.net
     urls:
-    - https://gzericlee.github.io/bingo-github-helm/api-gateway-1.0.7.tgz
+    - https://gitlab.bingosoft.net/bingo-devops/bingo-devops-helm/raw/master/api-gateway-1.0.7.tgz
     version: 1.0.7
-generated: 2018-05-29T17:47:53.814430651+08:00
+generated: 2018-06-08T11:20:27.0561954+08:00
