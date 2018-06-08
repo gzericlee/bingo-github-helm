@@ -18,7 +18,7 @@ questions:
     type: string
     label: 镜像名称
 - variable: global.redis.deploy
-  default: "false"
+  default: "true"
   description: "是否需要部署Redis"
   label: 部署Redis
   type: boolean
@@ -42,7 +42,7 @@ questions:
   required: true
   label: 数据库连接
   group: "网关数据库"
-- variable: console.env.db_usernam
+- variable: console.env.db_username
   default: "paas"
   description: "用户名"
   type: string
