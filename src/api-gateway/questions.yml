@@ -1,10 +1,11 @@
 questions:
 - variable: console.deploy
-  default: "true"
+  default: "false"
   description: "部署控制台"
   label: 是否部署控制台
   type: boolean
-  show_subquestion_if: false
+  group: "网关控制台"
+  show_subquestion_if: true
   subquestions:
   - variable: console.image.repository
     default: "hub.bingosoft.net/bingoapigw/api-gateway-console:latest"
@@ -13,60 +14,52 @@ questions:
     label: 镜像名称
   - variable: console.env.db_url
     default: "jdbc:mysql://172.16.1.8:3336/paas_apigw?characterEncoding=utf-8&useSSL=false"
-    description: "连接字符串"
+    description: "网关数据库-连接字符串"
     type: string
     required: true
     label: 数据库连接
-    group: "网关数据库"
   - variable: console.env.db_username
     default: "paas"
-    description: "用户名"
+    description: "网关数据库-用户名"
     type: string
     required: true
     label: 用户名
-    group: "网关数据库"
   - variable: console.env.db_password
     default: "Bingo@devops1117"
-    description: "密码"
+    description: "网关数据库-密码"
     type: string
     required: true
     label: 密码
-    group: "网关数据库"
   - variable: console.env.user_db_url
     default: "jdbc:mysql://172.16.1.8:3336/paas_user?characterEncoding=utf-8&useSSL=false"
-    description: "连接字符串"
+    description: "用户数据库-连接字符串"
     type: string
     required: true
     label: 数据库连接
-    group: "用户数据库"
   - variable: console.env.user_db_username
     default: "paas"
-    description: "用户名"
+    description: "用户数据库-用户名"
     type: string
     required: true
     label: 用户名
-    group: "用户数据库"
   - variable: console.env.user_db_password
     default: "Bingo@devops1117"
-    description: "密码"
+    description: "用户数据库-密码"
     type: string
     required: true
     label: 密码
-    group: "用户数据库"
   - variable: console.env.oauth2_serverUrl
     default: "http://114.67.33.121:8081/sso"
-    description: "SSO地址"
+    description: "SSO外网地址"
     type: string
     required: true
     label: SSO地址
-    group: "SSO外网"
   - variable: console.ingress.enabled
     default: "true"
     description: "是否通过负载均衡公开服务"
     type: boolean
     label: 负载均衡
     show_subquestion_if: true
-    group: "访问方式"
     subquestions:
     - variable: console.ingress.hosts[0].name
       default: "xip.io"
@@ -86,10 +79,9 @@ questions:
     required: true
     label: 服务类型
     show_subquestion_if: "NodePort"
-    group: "服务类型"
     subquestions:
     - variable: console.service.port
-      default: ""
+      default: "30021"
       description: "NodePort端口（选择30000-32767之间的端口）"
       type: int
       min: 30000
@@ -97,11 +89,12 @@ questions:
       label: NodePort访问端口
 
 - variable: runtime.deploy
-  default: "true"
+  default: "false"
   description: "是否需要部署运行时"
   label: 部署运行时
   type: boolean
-  show_subquestion_if: false
+  group: "网关运行时"
+  show_subquestion_if: true
   subquestions:
   - variable: runtime.image.repository
     default: "hub.bingosoft.net/bingoapigw/api-gateway-runtime:latest"
@@ -110,18 +103,16 @@ questions:
     label: 镜像名称
   - variable: runtime.env.SSO_ENDPOINT
     default: "http://172.16.1.9:8081/sso"
-    description: "SSO地址"
+    description: "SSO内网地址"
     type: string
     required: true
     label: SSO地址
-    group: "SSO内网"
   - variable: runtime.ingress.enabled
     default: "true"
     description: "是否通过负载均衡公开服务"
     type: boolean
     label: 负载均衡
     show_subquestion_if: true
-    group: "访问方式"
     subquestions:
     - variable: runtime.ingress.hosts[0].name
       default: "xip.io"
@@ -141,10 +132,9 @@ questions:
     required: true
     label: 服务类型
     show_subquestion_if: "NodePort"
-    group: "服务类型"
     subquestions:
     - variable: runtime.service.port
-      default: ""
+      default: "30020"
       description: "NodePort端口（选择30000-32767之间的端口）"
       type: int
       min: 30000
