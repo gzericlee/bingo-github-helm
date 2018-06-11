@@ -56,7 +56,7 @@ questions:
     label: SSO地址
 
 - variable: console.ingress.enabled
-  default: "true"
+  default: "false"
   description: "是否通过负载均衡公开控制台"
   type: boolean
   label: 负载均衡
@@ -70,8 +70,8 @@ questions:
     required: true
     label: 主机名
 - variable: console.service.type
-  default: "NodePort"
-  description: "服务类型"
+  default: ""
+  description: "网关控制台服务类型"
   type: enum
   show_if: "console.ingress.enabled=false"
   options:
@@ -80,6 +80,7 @@ questions:
     - "LoadBalancer"
   required: true
   label: 服务类型
+  group: "网关控制台"
   show_subquestion_if: "NodePort"
   subquestions:
   - variable: console.service.port
@@ -111,7 +112,7 @@ questions:
     label: SSO地址
 
 - variable: runtime.ingress.enabled
-  default: "true"
+  default: "false"
   description: "是否通过负载均衡公开网关运行时"
   type: boolean
   label: 负载均衡
@@ -125,7 +126,7 @@ questions:
     required: true
     label: 主机名
 - variable: runtime.service.type
-  default: "NodePort"
+  default: ""
   description: "服务类型"
   type: enum
   show_if: "runtime.ingress.enabled=false"
@@ -134,7 +135,8 @@ questions:
     - "NodePort"
     - "LoadBalancer"
   required: true
-  label: 服务类型
+  label: 网关运行时服务类型
+  group: "网关运行时"
   show_subquestion_if: "NodePort"
   subquestions:
   - variable: runtime.service.port
