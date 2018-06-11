@@ -54,39 +54,41 @@ questions:
     type: string
     required: true
     label: SSO地址
-  - variable: console.ingress.enabled
-    default: "true"
-    description: "是否通过负载均衡公开服务"
-    type: boolean
-    label: 负载均衡
-    show_subquestion_if: true
-    subquestions:
-    - variable: console.ingress.hosts[0].name
-      default: "xip.io"
-      description: "通过主机名访问网关控制台"
-      type: hostname
-      required: true
-      label: 主机名
-  - variable: console.service.type
-    default: "NodePort"
-    description: "服务类型"
-    type: enum
-    show_if: "console.ingress.enabled=false"
-    options:
-      - "ClusterIP"
-      - "NodePort"
-      - "LoadBalancer"
+
+- variable: console.ingress.enabled
+  default: "true"
+  description: "是否通过负载均衡公开控制台"
+  type: boolean
+  label: 负载均衡
+  group: "网关控制台"
+  show_subquestion_if: true
+  subquestions:
+  - variable: console.ingress.hosts[0].name
+    default: "xip.io"
+    description: "通过主机名访问网关控制台"
+    type: hostname
     required: true
-    label: 服务类型
-    show_subquestion_if: "NodePort"
-    subquestions:
-    - variable: console.service.port
-      default: "30021"
-      description: "NodePort端口（选择30000-32767之间的端口）"
-      type: int
-      min: 30000
-      max: 32767
-      label: NodePort访问端口
+    label: 主机名
+- variable: console.service.type
+  default: "NodePort"
+  description: "服务类型"
+  type: enum
+  show_if: "console.ingress.enabled=false"
+  options:
+    - "ClusterIP"
+    - "NodePort"
+    - "LoadBalancer"
+  required: true
+  label: 服务类型
+  show_subquestion_if: "NodePort"
+  subquestions:
+  - variable: console.service.port
+    default: ""
+    description: "NodePort端口（选择30000-32767之间的端口）"
+    type: int
+    min: 30000
+    max: 32767
+    label: NodePort访问端口
 
 - variable: runtime.deploy
   default: "false"
@@ -107,39 +109,41 @@ questions:
     type: string
     required: true
     label: SSO地址
-  - variable: runtime.ingress.enabled
-    default: "true"
-    description: "是否通过负载均衡公开服务"
-    type: boolean
-    label: 负载均衡
-    show_subquestion_if: true
-    subquestions:
-    - variable: runtime.ingress.hosts[0].name
-      default: "xip.io"
-      description: "通过主机名访问网关控制台"
-      type: hostname
-      required: true
-      label: 主机名
-  - variable: runtime.service.type
-    default: "NodePort"
-    description: "服务类型"
-    type: enum
-    show_if: "runtime.ingress.enabled=false"
-    options:
-      - "ClusterIP"
-      - "NodePort"
-      - "LoadBalancer"
+
+- variable: runtime.ingress.enabled
+  default: "true"
+  description: "是否通过负载均衡公开网关运行时"
+  type: boolean
+  label: 负载均衡
+  group: "网关运行时"
+  show_subquestion_if: true
+  subquestions:
+  - variable: runtime.ingress.hosts[0].name
+    default: "xip.io"
+    description: "通过主机名访问网关控制台"
+    type: hostname
     required: true
-    label: 服务类型
-    show_subquestion_if: "NodePort"
-    subquestions:
-    - variable: runtime.service.port
-      default: "30020"
-      description: "NodePort端口（选择30000-32767之间的端口）"
-      type: int
-      min: 30000
-      max: 32767
-      label: NodePort访问端口
+    label: 主机名
+- variable: runtime.service.type
+  default: "NodePort"
+  description: "服务类型"
+  type: enum
+  show_if: "runtime.ingress.enabled=false"
+  options:
+    - "ClusterIP"
+    - "NodePort"
+    - "LoadBalancer"
+  required: true
+  label: 服务类型
+  show_subquestion_if: "NodePort"
+  subquestions:
+  - variable: runtime.service.port
+    default: ""
+    description: "NodePort端口（选择30000-32767之间的端口）"
+    type: int
+    min: 30000
+    max: 32767
+    label: NodePort访问端口
 
 - variable: redis.deploy
   default: "false"

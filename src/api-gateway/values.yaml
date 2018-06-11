@@ -11,7 +11,7 @@ console:
     port: 
 
   ingress:
-    enabled: false
+    enabled: true
     hosts:
     - name: gateway.console.local
 
@@ -39,7 +39,7 @@ runtime:
     port: 
 
   ingress:
-    enabled: false
+    enabled: true
     hosts:
     - name: gateway.runtime.local
 
