@@ -151,9 +151,8 @@ questions:
       max: 32767
       label: NodePort访问端口
 
-
 - variable: redis.deploy
-  default: "true"
+  default: "false"
   description: "是否需要部署Redis"
   label: 部署Redis
   type: boolean
