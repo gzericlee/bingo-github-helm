@@ -1,3 +1,4 @@
+{{ if .Values.runtime.deploy }}
 apiVersion: v1
 kind: Service
 metadata:
@@ -5,10 +6,13 @@ metadata:
   labels:
     app: api-gateway-runtime
 spec:
-  type: ClusterIP
+  type: {{ .Values.runtime.service.type }}
   ports:
-  - name: http
-    port: 8080
-    targetPort: http
+    - port: 8080
+      {{- if (and (eq .Values.console.service.type "NodePort") (not (empty .Values.console.service.port)))}}
+      nodePort: {{ .Values.console.service.port }}
+      {{- end }}
+      name: http
   selector:
     app: api-gateway-runtime
+{{ end }}

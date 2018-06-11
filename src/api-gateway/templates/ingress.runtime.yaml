@@ -1,6 +1,6 @@
-{{ if .Values.console.deploy }}
-{{ if .Values.console.ingress.enabled }}
-{{ range .Values.console.ingress.hosts }}
+{{ if .Values.runtime.deploy }}
+{{ if .Values.runtime.ingress.enabled }}
+{{ range .Values.runtime.ingress.hosts }}
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:

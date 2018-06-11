@@ -1,3 +1,4 @@
+{{ if .Values.runtime.deploy }}
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
@@ -14,14 +15,12 @@ spec:
       containers:
         - name: api-gateway-runtime
           image: "{{ .Values.runtime.image.repository }}"
-          imagePullPolicy: {{ .Values.runtime.image.pullPolicy }}
+          imagePullPolicy: Always
           resources:
             limits:
-              cpu: "0.2"
-              memory: 1Gi
+              memory: 512Mi
             requests:
-              cpu: "0.2"
-              memory: 1Gi
+              memory: 256Mi
           ports:
           - containerPort: 8080
           env:
@@ -30,12 +29,17 @@ spec:
           - name: CONSOLE_PORT
             value: "{{ .Values.runtime.env.CONSOLE_PORT }}"
           - name: REDIS_HOST
-            {{ if .Values.global.redis.deploy }}
-            value: "{{ .Values.global.redis.name }}"
+            {{ if .Values.redis.deploy }}
+            value: "api-gateway-redis"
             {{ else }}
-            value: "{{ .Values.global.redis.host }}"
+            value: "{{ .Values.redis.host }}"
             {{ end }}
           - name: REDIS_PORT
-            value: "{{ .Values.global.redis.port }}"
+            {{ if .Values.redis.deploy }}
+            value: "6379"
+            {{ else }}
+            value: "{{ .Values.redis.port }}"
+            {{ end }}
           - name: SSO_ENDPOINT
             value: "{{ .Values.runtime.env.SSO_ENDPOINT }}"
+{{ end }}

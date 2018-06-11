@@ -1,3 +1,4 @@
+{{ if .Values.console.deploy }}
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
@@ -14,14 +15,12 @@ spec:
       containers:
         - name: api-gateway-console
           image: "{{ .Values.console.image.repository }}"
-          imagePullPolicy: {{ .Values.console.image.pullPolicy }}
+          imagePullPolicy: Always
           resources:
             limits:
-              cpu: "0.2"
               memory: 1Gi
             requests:
-              cpu: "0.2"
-              memory: 1Gi
+              memory: 512Mi
           ports:
           - containerPort: 8080
           env:
@@ -34,10 +33,10 @@ spec:
           - name: oauth2_serverUrl
             value: "{{ .Values.console.env.oauth2_serverUrl }}"
           - name: redis_hostAndPort
-            {{ if .Values.global.redis.deploy }}
-            value: "{{ .Values.global.redis.name }}:{{ .Values.global.redis.port }}"
+            {{ if .Values.redis.deploy }}
+            value: "api-gateway-redis:6379"
             {{ else }}
-            value: "{{ .Values.global.redis.host }}:{{ .Values.global.redis.port }}"
+            value: "{{ .Values.redis.host }}:{{ .Values.redis.port }}"
             {{ end }}
           - name: user_db_password
             value: "{{ .Values.console.env.user_db_password }}"
@@ -45,3 +44,4 @@ spec:
             value: "{{ .Values.console.env.user_db_url }}"
           - name: user_db_username
             value: "{{ .Values.console.env.user_db_username }}"
+{{ end }}
