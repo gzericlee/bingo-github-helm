@@ -104,6 +104,18 @@ questions:
     description: "运行时镜像"
     type: string
     label: 镜像名称
+  - variable: runtime.env.registry_zone
+    default: "default"
+    description: "所属区域"
+    type: string
+    required: true
+    label: 所属区域
+  - variable: runtime.env.registry_group
+    default: "console"
+    description: "所属分组"
+    type: string
+    required: true
+    label: 所属分组
   - variable: runtime.env.SSO_ENDPOINT
     default: "http://172.16.1.9:8081/sso"
     description: "SSO内网地址"

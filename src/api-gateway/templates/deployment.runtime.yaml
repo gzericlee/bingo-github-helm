@@ -26,6 +26,10 @@ spec:
           env:
           - name: CONSOLE_HOST
             value: "{{ .Values.runtime.env.CONSOLE_HOST }}"
+          - name: registry.zone
+            value: "{{ .Values.runtime.env.registry_zone }}"
+          - name: registry.group
+            value: "{{ .Values.runtime.env.registry_group }}"
           - name: CONSOLE_PORT
             value: "{{ .Values.runtime.env.CONSOLE_PORT }}"
           - name: REDIS_HOST

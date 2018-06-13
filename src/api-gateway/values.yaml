@@ -45,6 +45,8 @@ runtime:
 
   env:
     SSO_ENDPOINT: http://172.16.1.9:8081/sso
+    registry_zone: default
+    registry_group: console
 
 ## Redis ##
 redis:
