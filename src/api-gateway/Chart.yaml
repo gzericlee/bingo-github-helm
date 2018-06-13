@@ -1,5 +1,5 @@
-appVersion: v2.0.x
-version: v2.0.x
+appVersion: 2.0.1
+version: 2.0.1
 description: api网关
 engine: gotpl
 keywords:
