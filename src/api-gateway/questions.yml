@@ -8,7 +8,7 @@ questions:
   show_subquestion_if: true
   subquestions:
   - variable: console.image.repository
-    default: "hub.bingosoft.net/bingoapigw/api-gateway-console:latest"
+    default: "registry.bingosoft.net/bingoapigw/api-gateway-console:v2.0.x"
     description: "控制台镜像"
     type: string
     label: 镜像名称
@@ -100,7 +100,7 @@ questions:
   show_subquestion_if: true
   subquestions:
   - variable: runtime.image.repository
-    default: "hub.bingosoft.net/bingoapigw/api-gateway-runtime:latest"
+    default: "registry.bingosoft.net/bingoapigw/api-gateway-runtime:v2.0.x"
     description: "运行时镜像"
     type: string
     label: 镜像名称
