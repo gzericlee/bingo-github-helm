@@ -48,11 +48,14 @@ runtime:
     registry_zone: default
     registry_group: console
 
-## Redis ##
-redis:
+## 全局配置 可在子chart引用 ##
+global:
 
-  deploy: true
+  ## Redis ##
+  redis:
 
-  host: 
+    deploy: true
 
-  port: 6379
+    host: 
+
+    port: 6379

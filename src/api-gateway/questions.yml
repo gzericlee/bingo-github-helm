@@ -159,7 +159,7 @@ questions:
     max: 32767
     label: NodePort访问端口
 
-- variable: redis.deploy
+- variable: global.redis.deploy
   default: "false"
   description: "是否需要部署Redis"
   label: 部署Redis
@@ -167,12 +167,12 @@ questions:
   show_subquestion_if: false
   group: "Redis"
   subquestions:
-  - variable: redis.host
+  - variable: global.redis.host
     default: ""
     description: "Redis地址"
     type: string
     label: 地址
-  - variable: redis.port
+  - variable: global.redis.port
     default: "6379"
     description: "Redis端口"
     type: int

@@ -1,0 +1,41 @@
+{{ if .Values.console.deploy }}
+{{ if .Values.console.ingress.enabled }}
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: "{{ $.Release.Name }}-console-ingress"
+spec:
+  rules:
+  {{ range .Values.console.ingress.hosts }}
+  - host: {{ .name }}
+    http:
+      paths:
+        - path: {{ default "/" .path }}
+          backend:
+            serviceName: api-gateway-console
+            servicePort: 8080
+  {{ end }}
+---
+{{ end }}
+{{ end }}
+
+{{ if .Values.runtime.deploy }}
+{{ if .Values.runtime.ingress.enabled }}
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: "{{ $.Release.Name }}-runtime-ingress"
+spec:
+  rules:
+  {{ range .Values.runtime.ingress.hosts }}
+  - host: {{ .name }}
+    http:
+      paths:
+        - path: {{ default "/" .path }}
+          backend:
+            serviceName: api-gateway-runtime
+            servicePort: 8080
+  {{ end }}
+---
+{{ end }}
+{{ end }}

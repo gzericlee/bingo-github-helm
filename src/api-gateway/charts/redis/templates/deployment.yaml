@@ -1,4 +1,4 @@
-{{ if .Values.redis.deploy }}
+{{ if .Values.global.redis.deploy }}
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
